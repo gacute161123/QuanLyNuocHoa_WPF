@@ -1,0 +1,58 @@
+﻿<Window x:Class="BaiTapCuoiKi.View.InsertKhachHang"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaiTapCuoiKi.View"
+          xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        Background="Transparent"
+        Height="450"
+        Width="300">
+    <Border CornerRadius="10" BorderThickness="1" BorderBrush="Gray" Background="#FFFFDAE0" MouseDown="Border_MouseDown">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Name="tb_dangkykhachhang" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Đăng ký tài khoản khách hàng" FontWeight="Bold" FontSize="18" Margin="20" />
+
+            <Border Grid.Row="1" Margin="20" BorderBrush="LightGray" BorderThickness="1" Padding="20">
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Text="Tên khách hàng:"  FontSize="15" Margin="0 10" />
+                    <Border BorderThickness="1" BorderBrush="#FF2B2B2B"  CornerRadius="5" Width="215" >
+                        <Grid>
+                            <TextBlock x:Name="tbl_ten" Foreground="Gray" VerticalAlignment="Center" MouseDown="tbl_ten_MouseDown" Text="Tên Khách Hàng" Style="{StaticResource textHint}" ></TextBlock>
+                            <TextBox x:Name="txtten" TextChanged="txtchangedten" Style="{StaticResource textBox}"></TextBox>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="Địa Chỉ:"  FontSize="15" Margin="0 10" />
+                    <Border BorderThickness="1" BorderBrush="#FF2B2B2B" CornerRadius="5" Width="215" Margin="0 5 0 0">
+                        <Grid>
+                            <TextBlock x:Name="tbl_diachi" Foreground="Gray"  VerticalAlignment="Center"  MouseDown="tbl_diachi_MouseDown" Text="Địa Chỉ" Style="{StaticResource textHint}" ></TextBlock>
+                            <TextBox x:Name="txtdiachi" TextChanged="txtchangeddiachi" Style="{StaticResource textBox}"></TextBox>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="Số Điện Thoại:"  FontSize="15" Margin="0 10" />
+                    <Border BorderThickness="1" BorderBrush="#FF2B2B2B" CornerRadius="5" Width="215" Margin="0 5 0 0">
+                        <Grid>
+                            <TextBlock x:Name="tbl_sdt" Foreground="Gray"  VerticalAlignment="Center"  MouseDown="tbl_sdt_MouseDown"  Text="Số Điện Thoại" Style="{StaticResource textHint}" ></TextBlock>
+                            <TextBox x:Name="txtsdt" TextChanged="txtchangedsdt" Style="{StaticResource textBox}"></TextBox>
+                        </Grid>
+                    </Border>
+                    <StackPanel Orientation="Horizontal" Margin="0 40 0 0" HorizontalAlignment="Right">
+                        <Button  Content="Thoát"  Height="45" Width="80"   Style="{StaticResource themsanpham}"   Click="Button_Click"  ></Button>
+                        <Button  Content="Xác Nhận"  Height="45" Width="80" Margin="10 0 0 0"  Style="{StaticResource themsanpham}"   Click="them_Click" ></Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>

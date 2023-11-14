@@ -1,0 +1,90 @@
+﻿<Window x:Class="BaiTapCuoiKi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaiTapCuoiKi"
+        xmlns:uc="clr-namespace:BaiTapCuoiKi.View"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        Background="Transparent"
+        Title="MainWindow" Height="450" Width="800"
+  
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="7*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--LEFT MENU-->
+        <Image Source="/Image/close.png" Grid.Column="1" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imageClose}"></Image>
+        <Border CornerRadius="20 0 0 20" Background="#FF282828" Grid.Column="0" >
+            <Grid>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 35 0 0">
+                        <TextBlock Text="ADOPT" FontSize="22" Foreground="#FFEE8BA2" FontWeight="Bold" TextAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Separator Height="0.8" Margin="20 30" Background="#FFEE8BA2"></Separator>
+                    <!--Menu-->
+                    <Button Name="btn_home" Style="{StaticResource menuButtonActive}" Click="btn_home_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"></fa:IconImage>
+                            <TextBlock Text="TRANG CHỦ" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="btn_donhang" Style="{StaticResource menuButton}" Click="btn_donhang_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="CartPlus" Style="{StaticResource menuButtonIcon}"></fa:IconImage>
+                            <TextBlock Text="ĐƠN HÀNG" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="btn_sanpham" Style="{StaticResource menuButton}" Click="btn_sanpham_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Shopify" Style="{StaticResource menuButtonIcon}"></fa:IconImage>
+                            <TextBlock Text="SẢN PHẨM" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    
+
+
+                   
+
+                    <Button Name="btn_khachhang" Style="{StaticResource menuButton}" Click="btn_khachhang_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="PeopleGroup" Style="{StaticResource menuButtonIcon}"></fa:IconImage>
+                            <TextBlock Text="KHÁCH HÀNG" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <!--
+                <Button Name="btn_caidat" Style="{StaticResource menuButton}" Click="btn_caidat_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"></fa:IconImage>
+                        <TextBlock Text="TÀI KHOẢN" Style="{StaticResource menuButtonText}"></TextBlock>
+                    </StackPanel>
+                </Button>
+            -->
+
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 10">
+                    <Button Name="btn_dangxuat" Style="{StaticResource menuButton}" Click="btn_dangxuat_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"></fa:IconImage>
+                            <TextBlock Text="ĐĂNG XUẤT" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="1" CornerRadius="0 20 20 0" Background="#FFFFDAE0"   > <!--MouseDown="Border_MouseDown"-->
+            <UserControl x:Name="Maincontent">
+                <uc:HomeUserControl></uc:HomeUserControl>
+            </UserControl>
+        </Border>
+
+
+    </Grid>
+</Window>

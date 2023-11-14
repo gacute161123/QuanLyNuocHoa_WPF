@@ -1,0 +1,120 @@
+﻿<Window x:Class="BaiTapCuoiKi.View.InsertDonHang"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:local="clr-namespace:BaiTapCuoiKi.View"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        Background="Transparent"
+        Title="Hóa Đơn" Height="600" Width="800">
+    <Border CornerRadius="20 20 20 20" Background="#FFFFDAE0" MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock  Grid.Row="0" Foreground="Black"  Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Hóa đơn" FontSize="50" FontWeight="Bold"></TextBlock>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                <Border BorderThickness="2" Margin="50 7" CornerRadius="15" Background="#FFF9F9F9">
+                    <StackPanel Orientation="Horizontal"  >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Thông Tin Hóa Đơn" HorizontalAlignment="Center" Margin="0,10,0,10"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="Tên Khách Hàng" Margin="10" />
+                                    <Label Content="Thời Gian Đặt" Margin="10"/>
+                                    <Label Content="Địa Chỉ : " Margin="10"/>
+                                   
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" >
+                                    <ComboBox SelectedIndex="0"
+                              DisplayMemberPath="Khachhang_ten"
+                              SelectedValuePath="Khachhang_ID"
+                              Name="cbb_khachhang"
+                              Margin="0 10 10 0"
+                                Width="150"
+                                          Style="{StaticResource ComboBoxStyleHoaDon}">
+
+                                    </ComboBox>
+                                    <DatePicker x:Name="tb_thoigiandat" Margin="0 20 10 0"  Height="25"  Width="150"  ></DatePicker>
+                                    <TextBox x:Name="tb_diachi"  Margin="0 30  10 0" TextWrapping="Wrap" Background="Transparent" BorderBrush="Transparent"  BorderThickness="0" Text="" Width="150"  />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border BorderThickness="2" Margin="50 7" CornerRadius="15" Background="#FFF9F9F9">
+                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Chi Tiết Hóa Đơn" HorizontalAlignment="Center" Margin="0,10,0,10"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="Tên Sản Phẩm" Margin="10"/>
+                                    <Label Content="Đơn giá" Margin="10"/>
+                                    <Label Content="Số lượng" Margin="10"/>
+                                    
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" >
+                                    <ComboBox SelectedIndex="0"
+                              DisplayMemberPath="Sanpham_ten"
+                              SelectedValuePath="Sanpham_ID"
+                              Name="cbb_sanpham"
+                              Margin="0 10 10 0"
+                                          Width="150"
+                                              SelectionChanged="ComboBox_SelectionChanged"
+                                          >
+                                    </ComboBox>
+                                    <TextBox x:Name="tb_dongia" TextWrapping="Wrap" Text="" Width="150" Margin="0 25 10 0" Style="{StaticResource textBoxdonhang}"/>
+                                    <TextBox x:Name="tb_cthdsoluong" TextWrapping="Wrap" Text="" Width="150" Margin="0 25 10 0" Style="{StaticResource textBoxdonhang}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
+                                <Button x:Name="btn_themCTHD" Height="47" Width="100" Margin="10 0 0 0" Content="Thêm"  Style="{StaticResource thembutton}" Click="btn_themCTHD_Click"></Button>
+                                <Button x:Name="xuatFileWord" Height="47" Width="120" Margin="10 0 0 0" Content="In Hóa Đơn"  Style="{StaticResource thembutton}" Click="xuatFileWord_Click" ></Button>
+                            </StackPanel>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            
+            <DataGrid Name="dgChiTietHoaDon" Grid.Row="2" IsReadOnly="True" SelectionMode="Single"  AutoGenerateColumns="False" Height="160" Margin="5" HorizontalAlignment="Center" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="100" Header="Mã HĐ " Binding="{Binding Donhang_ID}"></DataGridTextColumn>
+                    <DataGridTextColumn Width="220" Header="Tên Sản Phẩm" Binding="{Binding SANPHAM.Sanpham_ten}"></DataGridTextColumn>
+                    <DataGridTextColumn Width="180" Header="Số Lượng Sản Phẩm" Binding="{Binding CTHD_soluong}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Sửa" Width="80" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="SuaCTHD_Click" Style="{StaticResource thungrac}" Width="30" Height="30" HorizontalAlignment="Left">
+                                    <fa:IconImage Icon="Edit"  Width="15" Height="15"  VerticalAlignment="Center"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Xóa" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="XoaCTHD_Click" Style="{StaticResource thungrac}" Width="30" Height="30" HorizontalAlignment="Left">
+                                    <fa:IconImage Icon="Trash"  Width="15" Height="15" VerticalAlignment="Center"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+            <StackPanel  Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center">
+                <Button x:Name="btn_thoat" Height="50"  Width="120" Margin="50 0 0 0" Content="Thoát" Style="{StaticResource searchbutton}" Click="btn_thoat_Click"  FontSize="15" Foreground="#FFEE8BA2" FontWeight="Bold"></Button>
+                <Button x:Name="btn_luu" Height="50" Width="120" Margin="460 0 0 0" Content="Lưu" Click="btn_luuHD_Click" Style="{StaticResource thembutton}"  FontSize="15" FontWeight="Bold"></Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
